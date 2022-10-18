@@ -7,6 +7,7 @@ A detailed doc on consent artifact can be found [here](https://dla.gov.in/sites/
 The following json describes the structure of a consent artifact
 ```
 {
+    "signature": "",
     "created": "YYYY-MM-DDThh:mm:ssZn.n",
     "expires": "YYYY-MM-DDThh:mm:ssZn.n",
     "id": ""
@@ -39,6 +40,12 @@ The following json describes the structure of a consent artifact
     "purpose": "",
     "user_sign": "",
     "collector_sign": "",
+    "frequency": {
+        "ttl": 1200,
+        "limit": 2,
+        "total_queries_allowed": 400
+    }, 
+    "total_queries_allowed": 1,
     "log": {
         "consent_use": {
             "url": "https://sample-log/api/v1/log"
