@@ -13,38 +13,31 @@ The following json describes the structure of a consent artifact
     "id": ""
     "revocable": false,
     "collector": {
-        "id": ""
+        "id": "did:collector:123",
         "url": "https://sample-collector/api/v1/collect"
     },
     "consumer": {
-        "id": "",
-        "url": "https://sample-consumer/api/v1/consume"
+        "id": "did:consumer:123",
+        "url": "https://sample-consumer/api/v1/consume" //webhook on revoke, accept
     },
     "provider": {
-        "id": "",
-        "url": "https://sample-consumer/api/v1"
+        "id": "did:proider:123",
+        "url": "https://sample-consumer/api/v1" //webhook
     },
     "user": {
-        "type": "AADHAAR|MOBILE|PAN|PASSPORT|...",
-        "name": "",
-        "issuer": "",
-        "dpID": "",
-        "cmID": "",
-        "dcID": ""
+        "id": "did:user:123", //FA ID, Accept or Reject => notify collector
     },
     "revoker": {
         "url": "https://sample-revoker/api/v1/revoke",
-        "name": "",
-        "id": ""
+        "id": "did:user:123"
     },
     "purpose": "",
     "user_sign": "",
     "collector_sign": "",
     "frequency": {
         "ttl": 1200,
-        "limit": 2,
-        "total_queries_allowed": 400
-    }, 
+        "limit": 2
+    },
     "total_queries_allowed": 1,
     "log": {
         "consent_use": {
@@ -54,7 +47,17 @@ The following json describes the structure of a consent artifact
             "url": "https://sample-log/api/v1/log"
         }
     },
-    "data": <Valid superset GraphQL query of consented data>"
+    "data": <Valid superset GraphQL query of consented data>",
+    "proof": {
+        "type": "RsaSignature2018",
+        "created": "2017-06-18T21:19:10Z",
+        "proofPurpose": "assertionMethod",
+        "verificationMethod": "https://example.edu/issuers/565049#key-1",
+        "jws": "eyJhbGciOiJSUzI1NiIsImI2NCI6ZmFsc2UsImNyaXQiOlsiYjY0Il19..TCYt5X
+                sITJX1CxPCT8yAV-TVkIEq_PbChOMqsLfRoPsnsgw5WEuts01mq-pQy7UJiN5mgRxD-WUc
+                X16dUEMGlv50aqzpqh4Qktb3rk-BuQy72IFLOqV0G_zS245-kronKb78cPN25DGlcTwLtj
+                PAYuNzVBAh4vGHSrQyHUdBBPM"
+    }
 }
 ```
 
